@@ -183,7 +183,7 @@ class _PagedVerticalCalendarState extends State<PagedVerticalCalendar> {
       );
 
       WidgetsBinding.instance.addPostFrameCallback(
-        (_) => widget.onMonthLoaded?.call(month.year, month.month),
+            (_) => widget.onMonthLoaded?.call(month.year, month.month),
       );
 
       final newItems = [month];
@@ -212,7 +212,7 @@ class _PagedVerticalCalendarState extends State<PagedVerticalCalendar> {
       );
 
       WidgetsBinding.instance.addPostFrameCallback(
-        (_) => widget.onMonthLoaded?.call(month.year, month.month),
+            (_) => widget.onMonthLoaded?.call(month.year, month.month),
       );
 
       final newItems = [month];
@@ -328,6 +328,7 @@ class _MonthView extends StatelessWidget {
 
     return Column(
       children: <Widget>[
+
         /// display the default month header if none is provided
         monthBuilder?.call(context, month.month, month.year) ??
             _DefaultMonthView(
@@ -347,12 +348,16 @@ class _MonthView extends StatelessWidget {
             if (index < blankSpaces) return SizedBox();
 
             final date = validDates[index - blankSpaces];
-            return AspectRatio(
-              aspectRatio: 1.0,
-              child: InkWell(
-                onTap: onDayPressed == null ? null : () => onDayPressed!(date),
-                child: dayBuilder?.call(context, date) ??
-                    _DefaultDayView(date: date),
+            return Padding(
+              padding: EdgeInsets.only(top: 5, bottom: 5),
+              child: AspectRatio(
+                aspectRatio: 1.0,
+                child: InkWell(
+                  onTap: onDayPressed == null ? null : () =>
+                      onDayPressed!(date),
+                  child: dayBuilder?.call(context, date) ??
+                      _DefaultDayView(date: date),
+                ),
               ),
             );
           },
@@ -390,7 +395,10 @@ class _DefaultMonthView extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         '${months[month - 1]} $year',
-        style: Theme.of(context).textTheme.titleLarge,
+        style: Theme
+            .of(context)
+            .textTheme
+            .titleLarge,
       ),
     );
   }
