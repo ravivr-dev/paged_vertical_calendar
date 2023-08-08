@@ -342,6 +342,8 @@ class _MonthView extends StatelessWidget {
           padding: EdgeInsets.zero,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: DateTime.daysPerWeek - weekDaysToHide.length,
+              crossAxisSpacing: 6,
+            
           ),
           itemCount: validDates.length + blankSpaces,
           itemBuilder: (BuildContext context, int index) {
