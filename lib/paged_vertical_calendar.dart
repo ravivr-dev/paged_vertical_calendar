@@ -342,7 +342,8 @@ class _MonthView extends StatelessWidget {
           padding: EdgeInsets.zero,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: DateTime.daysPerWeek - weekDaysToHide.length,
-              crossAxisSpacing: 6,
+            mainAxisSpacing: 20,
+            crossAxisSpacing: 20,
             
           ),
           itemCount: validDates.length + blankSpaces,
@@ -351,7 +352,7 @@ class _MonthView extends StatelessWidget {
 
             final date = validDates[index - blankSpaces];
             return AspectRatio(
-              aspectRatio: 0.5,
+              aspectRatio: 1,
               child: InkWell(
                 onTap: onDayPressed == null ? null : () =>
                     onDayPressed!(date),
