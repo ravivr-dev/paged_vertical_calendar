@@ -348,16 +348,13 @@ class _MonthView extends StatelessWidget {
             if (index < blankSpaces) return SizedBox();
 
             final date = validDates[index - blankSpaces];
-            return Padding(
-              padding: EdgeInsets.only(top: 5, bottom: 5),
-              child: AspectRatio(
-                aspectRatio: 1.0,
-                child: InkWell(
-                  onTap: onDayPressed == null ? null : () =>
-                      onDayPressed!(date),
-                  child: dayBuilder?.call(context, date) ??
-                      _DefaultDayView(date: date),
-                ),
+            return AspectRatio(
+              aspectRatio: 0.5,
+              child: InkWell(
+                onTap: onDayPressed == null ? null : () =>
+                    onDayPressed!(date),
+                child: dayBuilder?.call(context, date) ??
+                    _DefaultDayView(date: date),
               ),
             );
           },
